@@ -1,0 +1,28 @@
+server:
+  port: 9501
+eureka:
+  instance:
+    hostname: yshy-zuul-gateway
+    instance-id: yshy-zuul-gateway
+    prefer-ip-address: true
+    lease-renewal-interval-in-seconds: 2
+    lease-expiration-duration-in-seconds: 5
+  client:
+    service-url:
+      defaultZone: http://admin:enjoy@localhost:7001/eureka
+spring:
+  application:
+    name: yshy-zuul-gateway
+zuul:
+  routes:
+    auth:
+      path: /auth-proxy/**
+      serviceId: yshy-auth
+  ignored-services:
+    "*"
+  prefix: /yshy-api
+info:
+  app.name: yshy-zuul-gateway
+  company.name: yshy
+  build.artifactId: $project.artifactId$
+  build.modelVersion: $project.modelVersion$

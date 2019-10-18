@@ -1,0 +1,17 @@
+server:
+  port: 9000
+eureka:
+  client:
+    service-url:
+      defaultZone: http://admin:enjoy@localhost:7001/eureka
+    register-with-eureka: true
+  instance:
+    instance-id: yshy-provider
+    prefer-ip-address: true
+    lease-renewal-interval-in-seconds: 2
+    lease-expiration-duration-in-seconds: 5
+info:
+  app.name: yshy-provider
+  company.name: yshy
+  build.artifactId: $project.artifactId$
+  build.modelVersion: $project.modelVersion$

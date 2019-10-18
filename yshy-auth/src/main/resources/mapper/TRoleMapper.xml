@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.onfishs.yshyauth.mapper.TRoleMapper">
+     <resultMap id="baseResultMap" type="com.onfishs.yshycore.auth.entity.TRole">
+         <id column="id" property="id" jdbcType="VARCHAR"></id>
+         <id column="role_name" property="roleName" jdbcType="VARCHAR"></id>
+         <id column="data_state" property="dataState" jdbcType="INTEGER"></id>
+         <id column="role_desc" property="roleDesc" jdbcType="VARCHAR"></id>
+         <id column="syss_tag" property="syssTag" jdbcType="VARCHAR"></id>
+         <id column="sort_index" property="sortIndex" jdbcType="INTEGER"></id>
+         <id column="data_type" property="dataType" jdbcType="INTEGER"></id>
+         <id column="create_time" property="createTime" jdbcType="TIMESTAMP"></id>
+         <id column="creator_id" property="creatorId" jdbcType="VARCHAR"></id>
+     </resultMap>
+
+     <update id="updateSelective" parameterType="com.onfishs.yshycore.auth.entity.TRole">
+         update t_role
+         <set>
+            <include refid="updateColumn"></include>
+         </set>
+         where id = #{id, jdbcType=VARCHAR}
+     </update>
+
+     <sql id="updateColumn">
+         <if test="roleName!=null">
+             role_name = #{roleName, jdbcType=VARCHAR},
+         </if>
+         <if test="dataState!=null">
+             data_state = #{dataState, jdbcType=INTEGER},
+         </if>
+         <if test="roleDesc!=null">
+             role_desc = #{roleDesc, jdbcType=VARCHAR},
+         </if>
+         <if test="syssTag!=null">
+             syss_tag = #{syssTag, jdbcType=VARCHAR},
+         </if>
+         <if test="sortIndex!=null">
+             sort_index = #{sortIndex, jdbcType=INTEGER},
+         </if>
+         <if test="dataType!=null">
+             data_type = #{dataType, jdbcType=INTEGER},
+         </if>
+         <if test="createTime!=null">
+             create_time = #{createTime, jdbcType=TIMESTAMP},
+         </if>
+         <if test="creatorId!=null">
+             creator_id = #{creatorId, jdbcType=VARCHAR},
+         </if>
+     </sql>
+
+    <sql id="selectColumn">
+        id, role_name, data_state, role_desc, syss_tag, sort_index, data_type, create_time, creator_id
+    </sql>
+</mapper>

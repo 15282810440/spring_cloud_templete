@@ -1,0 +1,13 @@
+server:
+  port: 7001
+eureka:
+  server:
+    enable-self-preservation: false
+    eviction-interval-timer-in-ms: 1000
+  client:
+    fetch-registry: false
+    register-with-eureka: false
+    service-url:
+      defualtZone: http://admin:enjoy@localhost:7001/eureka
+  instance:
+    hostname: eureka

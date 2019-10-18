@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.onfishs.yshyauth.mapper.TUserMapper">
+    <resultMap id="baseResultMap" type="com.onfishs.yshycore.auth.entity.TUser" >
+        <id column="id" property="id" jdbcType="VARCHAR" ></id>
+        <result column="username" property="username" jdbcType="VARCHAR" ></result>
+        <result column="login_account" property="loginAccount" jdbcType="VARCHAR" ></result>
+        <result column="password" property="password" jdbcType="VARCHAR" ></result>
+        <result column="address" property="address" jdbcType="VARCHAR" ></result>
+        <result column="login_time" property="loginTime" jdbcType="TIMESTAMP" ></result>
+        <result column="login_ip" property="loginIp" jdbcType="VARCHAR" ></result>
+        <result column="data_state" property="dataState" jdbcType="INTEGER" ></result>
+        <result column="create_time" property="createTime" jdbcType="TIMESTAMP" ></result>
+        <result column="creator_id" property="creatorId" jdbcType="VARCHAR" ></result>
+        <result column="mail" property="mail" jdbcType="VARCHAR" ></result>
+        <result column="phone" property="phone" jdbcType="VARCHAR" ></result>
+        <result column="user_desc" property="userDesc" jdbcType="VARCHAR" ></result>
+        <result column="qq" property="qq" jdbcType="VARCHAR" ></result>
+        <result column="wx" property="wx" jdbcType="VARCHAR" ></result>
+        <result column="bind_ip" property="bindIp" jdbcType="VARCHAR" ></result>
+        <result column="security_cert_type" property="securityCertType" jdbcType="INTEGER" ></result>
+        <result column="syss_tag" property="syssTag" jdbcType="VARCHAR" ></result>
+        <result column="sort_index" property="sortIndex" jdbcType="INTEGER" ></result>
+        <result column="data_type" property="dataType" jdbcType="INTEGER" ></result>
+    </resultMap>
+
+    <update id="updateSelective" parameterType="com.onfishs.yshycore.auth.entity.TUser">
+        update t_user
+        <set>
+          <include refid="updateColumn"></include>
+        </set>
+        where id = #{id, jdbcType=VARCHAR}
+    </update>
+
+    <sql id="updateColumn">
+        <if test="username!=null">
+          username = #{username, jdbcType=VARCHAR},
+        </if>
+        <if test="loginAccount!=null">
+            login_account = #{loginAccount, jdbcType=VARCHAR},
+        </if>
+        <if test="password!=null">
+            password = #{password, jdbcType=VARCHAR},
+        </if>
+        <if test="address!=null">
+            address = #{address, jdbcType=VARCHAR},
+        </if>
+        <if test="loginTime!=null">
+            login_time = #{loginTime, jdbcType=TIMESTAMP},
+        </if>
+        <if test="loginIp!=null">
+            login_ip = #{loginIp, jdbcType=VARCHAR},
+        </if>
+        <if test="dataState!=null">
+            data_state = #{dataState, jdbcType=INTEGER},
+        </if>
+        <if test="createTime!=null">
+            create_time = #{createTime, jdbcType=TIMESTAMP},
+        </if>
+        <if test="username!=null">
+            creator_id = #{creatorId, jdbcType=VARCHAR},
+        </if>
+        <if test="mail!=null">
+            mail = #{mail, jdbcType=VARCHAR},
+        </if>
+        <if test="phone!=null">
+            phone = #{phone, jdbcType=VARCHAR},
+        </if>
+        <if test="userDesc!=null">
+            user_desc = #{userDesc, jdbcType=VARCHAR},
+        </if>
+        <if test="qq!=null">
+            qq = #{qq, jdbcType=VARCHAR},
+        </if>
+        <if test="wx!=null">
+            wx = #{wx, jdbcType=VARCHAR},
+        </if>
+        <if test="bindIp!=null">
+            bind_ip = #{bindIp, jdbcType=VARCHAR},
+        </if>
+        <if test="securityCertType!=null">
+            security_cert_type = #{securityCertType, jdbcType=INTEGER},
+        </if>
+        <if test="syssTag!=null">
+            syss_tag = #{syssTag, jdbcType=VARCHAR},
+        </if>
+        <if test="sortIndex!=null">
+            sort_index = #{sortIndex, jdbcType=INTEGER},
+        </if>
+        <if test="dataType!=null">
+            data_type = #{dataType, jdbcType=INTEGER},
+        </if>
+    </sql>
+
+    <sql id="selectColumn">
+        id, username, login_account, password, address, login_time, login_ip, data_state, create_time, creator_id, mail, phone, user_desc, qq,
+        wx, bind_ip, security_cert_type, syss_tag, sort_index, data_type
+    </sql>
+
+
+</mapper>
